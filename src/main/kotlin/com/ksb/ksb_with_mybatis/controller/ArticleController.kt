@@ -1,4 +1,4 @@
-package com.ksb.ksb_with_mybatis
+package com.ksb.ksb_with_mybatis.controller
 
 import com.ksb.ksb_with_mybatis.dao.ArticleMapper
 import com.ksb.ksb_with_mybatis.model.Article
