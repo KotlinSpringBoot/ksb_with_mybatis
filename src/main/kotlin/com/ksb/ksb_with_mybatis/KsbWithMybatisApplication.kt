@@ -13,7 +13,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.support.beans
 
 @SpringBootApplication
-@MapperScan("com.ksb.ksb_with_mybatis.dao")
+@MapperScan(basePackages = arrayOf("com.ksb.ksb_with_mybatis.dao")) // 这行需要配置 Mapper 接口的扫描
 class KsbWithMybatisApplication
 
 fun main(args: Array<String>) {

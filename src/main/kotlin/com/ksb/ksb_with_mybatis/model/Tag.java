@@ -7,13 +7,13 @@ import java.util.Date;
 public class Tag {
     private Long id;
 
+    private Long articleId;
+
     private String name;
 
     private Date gmtCreate = new Date();
 
     private Date gmtModify = new Date();
-
-    private Long articleId;
 
     public Long getId() {
         return id;

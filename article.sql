@@ -58,6 +58,6 @@ DESC comment;
 DESC tag;
 
 SELECT * FROM article;
-SELECT * FROM comment;
+SELECT * FROM comment WHERE article_id = 2;
 SELECT * FROM tag;
 

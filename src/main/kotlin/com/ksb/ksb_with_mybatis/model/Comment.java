@@ -7,6 +7,8 @@ import java.util.Date;
 public class Comment {
     private Long id;
 
+    private Long articleId;
+
     private String author;
 
     private String content;
@@ -15,7 +17,7 @@ public class Comment {
 
     private Date gmtModify = new Date();
 
-    private Long articleId;
+
 
     public Long getId() {
         return id;

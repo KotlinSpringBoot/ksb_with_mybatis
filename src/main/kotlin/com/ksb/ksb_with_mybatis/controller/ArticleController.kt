@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*
 class ArticleController {
 
     @Autowired lateinit var articleService: ArticleService
-
     @GetMapping(value = *arrayOf("", "/"))
     fun listAll(): List<Article> {
         return articleService.findAll()
@@ -26,7 +25,6 @@ class ArticleController {
                  @RequestParam(value = "size", defaultValue = "10") size: Int): PageInfo<Article> {
         return articleService.listPage(pageNo, size)
     }
-
 
     @Autowired lateinit var commentMapper: CommentMapper
     @GetMapping("/{articleId}/comments")
