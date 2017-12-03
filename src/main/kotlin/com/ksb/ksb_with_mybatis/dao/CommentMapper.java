@@ -20,16 +20,7 @@ public interface CommentMapper {
 
     int updateByPrimaryKey(Comment record);
 
-    @Select("SELECT * FROM comment WHERE article_id = #{articleId}")
-//    @Results({
-//            @Result(id = true, column = "id", property = "id"),
-//            @Result(column = "author", property = "author"),
-//            @Result(column = "content", property = "content"),
-//            @Result(column = "gmt_create", property = "gmtCreate"),
-//            @Result(column = "gmt_modify", property = "gmtModify"),
-//            @Result(column = "article_id", property = "articleId"),
-//            @Result(column = "author", property = "author"),
-//    })
+    @Select("SELECT c.* FROM comment c join article_comments ac on c.id = ac.comment_id WHERE ac.article_id = #{articleId}")
     @ResultMap("BaseResultMap")
     List<Comment> selectByArticleId(Long articleId);
 }

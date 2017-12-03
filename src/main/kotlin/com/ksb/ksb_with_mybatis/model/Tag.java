@@ -7,13 +7,11 @@ import java.util.Date;
 public class Tag {
     private Long id;
 
-    private Long articleId;
-
     private String name;
 
-    private Date gmtCreate = new Date();
+    private Date gmtCreate;
 
-    private Date gmtModify = new Date();
+    private Date gmtModify;
 
     public Long getId() {
         return id;
@@ -31,7 +29,7 @@ public class Tag {
         this.name = name == null ? null : name.trim();
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -40,20 +38,12 @@ public class Tag {
         this.gmtCreate = gmtCreate;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getGmtModify() {
         return gmtModify;
     }
 
     public void setGmtModify(Date gmtModify) {
         this.gmtModify = gmtModify;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
     }
 }

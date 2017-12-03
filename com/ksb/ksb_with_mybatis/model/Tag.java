@@ -11,8 +11,6 @@ public class Tag {
 
     private Date gmtModify;
 
-    private Long articleId;
-
     public Long getId() {
         return id;
     }
@@ -43,13 +41,5 @@ public class Tag {
 
     public void setGmtModify(Date gmtModify) {
         this.gmtModify = gmtModify;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
     }
 }

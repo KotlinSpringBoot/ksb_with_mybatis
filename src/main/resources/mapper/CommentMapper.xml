@@ -7,10 +7,9 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
-    <result column="article_id" jdbcType="BIGINT" property="articleId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, author, content, gmt_create, gmt_modify, article_id
+    id, author, content, gmt_create, gmt_modify
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -27,9 +26,9 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into comment (author, content, gmt_create, 
-      gmt_modify, article_id)
+      gmt_modify)
     values (#{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModify,jdbcType=TIMESTAMP}, #{articleId,jdbcType=BIGINT})
+      #{gmtModify,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ksb.ksb_with_mybatis.model.Comment">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -49,9 +48,6 @@
       <if test="gmtModify != null">
         gmt_modify,
       </if>
-      <if test="articleId != null">
-        article_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="author != null">
@@ -65,9 +61,6 @@
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
-      </if>
-      <if test="articleId != null">
-        #{articleId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -86,9 +79,6 @@
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       </if>
-      <if test="articleId != null">
-        article_id = #{articleId,jdbcType=BIGINT},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -97,8 +87,7 @@
     set author = #{author,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      article_id = #{articleId,jdbcType=BIGINT}
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

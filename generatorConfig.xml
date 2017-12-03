@@ -35,7 +35,15 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table tableName="%"-->
+        <table tableName="%"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <!--<table tableName="article"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
@@ -43,28 +51,6 @@
         <!--<generatedKey column="ID" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
 
-        <table tableName="article"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
-        </table>
-
-        <table tableName="comment"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="tag"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
-        </table>
 
     </context>
 </generatorConfiguration>

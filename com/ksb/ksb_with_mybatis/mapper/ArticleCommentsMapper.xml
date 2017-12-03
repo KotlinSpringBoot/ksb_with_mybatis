@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksb.ksb_with_mybatis.dao.ArticleCommentsMapper">
+  <resultMap id="BaseResultMap" type="com.ksb.ksb_with_mybatis.model.ArticleComments">
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="comment_id" jdbcType="BIGINT" property="commentId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ksb.ksb_with_mybatis.model.ArticleComments">
+    insert into article_comments (article_id, comment_id)
+    values (#{articleId,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ksb.ksb_with_mybatis.model.ArticleComments">
+    insert into article_comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="commentId != null">
+        comment_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="commentId != null">
+        #{commentId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -20,14 +20,7 @@ public interface TagMapper {
 
     int updateByPrimaryKey(Tag record);
 
-    @Select("SELECT * FROM tag WHERE article_id = #{articleId}")
-//    @Results({
-//            @Result(id = true, column = "id", property = "id"),
-//            @Result(column = "name", property = "name"),
-//            @Result(column = "gmt_create", property = "gmtCreate"),
-//            @Result(column = "gmt_modify", property = "gmtModify"),
-//            @Result(column = "article_id", property = "articleId"),
-//    })
+    @Select("SELECT t.* FROM tag t JOIN article_tags at ON t.id = at.tag_id WHERE at.article_id  = #{articleId}")
     @ResultMap("BaseResultMap")
     List<Tag> selectByArticleId(Long articleId);
 }

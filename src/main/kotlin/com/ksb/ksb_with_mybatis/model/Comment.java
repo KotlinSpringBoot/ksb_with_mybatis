@@ -7,17 +7,13 @@ import java.util.Date;
 public class Comment {
     private Long id;
 
-    private Long articleId;
-
     private String author;
 
     private String content;
 
-    private Date gmtCreate = new Date();
+    private Date gmtCreate;
 
-    private Date gmtModify = new Date();
-
-
+    private Date gmtModify;
 
     public Long getId() {
         return id;
@@ -42,8 +38,7 @@ public class Comment {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -52,20 +47,12 @@ public class Comment {
         this.gmtCreate = gmtCreate;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getGmtModify() {
         return gmtModify;
     }
 
     public void setGmtModify(Date gmtModify) {
         this.gmtModify = gmtModify;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
     }
 }

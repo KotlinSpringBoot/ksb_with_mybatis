@@ -13,8 +13,6 @@ public class Comment {
 
     private Date gmtModify;
 
-    private Long articleId;
-
     public Long getId() {
         return id;
     }
@@ -53,13 +51,5 @@ public class Comment {
 
     public void setGmtModify(Date gmtModify) {
         this.gmtModify = gmtModify;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
     }
 }

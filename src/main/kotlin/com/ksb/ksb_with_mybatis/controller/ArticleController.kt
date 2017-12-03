@@ -3,6 +3,7 @@ package com.ksb.ksb_with_mybatis.controller
 import com.github.pagehelper.PageInfo
 import com.ksb.ksb_with_mybatis.dao.CommentMapper
 import com.ksb.ksb_with_mybatis.dao.TagMapper
+import com.ksb.ksb_with_mybatis.dto.ArticleDto
 import com.ksb.ksb_with_mybatis.model.Article
 import com.ksb.ksb_with_mybatis.model.Comment
 import com.ksb.ksb_with_mybatis.model.Tag
@@ -22,7 +23,7 @@ class ArticleController {
 
     @GetMapping(value = "/page")
     fun listPage(@RequestParam(value = "pageNo", defaultValue = "0") pageNo: Int,
-                 @RequestParam(value = "size", defaultValue = "10") size: Int): PageInfo<Article> {
+                 @RequestParam(value = "size", defaultValue = "10") size: Int): PageInfo<ArticleDto> {
         return articleService.listPage(pageNo, size)
     }
 
