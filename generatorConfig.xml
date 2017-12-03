@@ -36,11 +36,11 @@
         </javaClientGenerator>
 
         <!--<table tableName="%"-->
-               <!--enableCountByExample="false"-->
-               <!--enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false"-->
-               <!--enableUpdateByExample="false">-->
-            <!--<generatedKey column="ID" sqlStatement="MySql" identity="true"/>-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false">-->
+        <!--<generatedKey column="ID" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
 
         <table tableName="article"
