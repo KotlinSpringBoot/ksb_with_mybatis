@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="test.dao.ArticleMapper">
-  <resultMap id="BaseResultMap" type="test.model.Article">
+<mapper namespace="com.ksb.ksb_with_mybatis.dao.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.ksb.ksb_with_mybatis.model.Article">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="test.model.Article">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ksb.ksb_with_mybatis.model.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, author, gmt_create, gmt_modify, title, url
+    id, author, gmt_create, gmt_modify, title
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -30,18 +29,16 @@
     delete from article
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="test.model.Article">
+  <insert id="insert" parameterType="com.ksb.ksb_with_mybatis.model.Article">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into article (author, gmt_create, gmt_modify, 
-      title, url, content
-      )
+      title, content)
     values (#{author,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
-      #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="test.model.Article">
+  <insert id="insertSelective" parameterType="com.ksb.ksb_with_mybatis.model.Article">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -58,9 +55,6 @@
       </if>
       <if test="title != null">
         title,
-      </if>
-      <if test="url != null">
-        url,
       </if>
       <if test="content != null">
         content,
@@ -79,15 +73,12 @@
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="test.model.Article">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ksb.ksb_with_mybatis.model.Article">
     update article
     <set>
       <if test="author != null">
@@ -102,32 +93,27 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
-      </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="test.model.Article">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ksb.ksb_with_mybatis.model.Article">
     update article
     set author = #{author,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       title = #{title,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="test.model.Article">
+  <update id="updateByPrimaryKey" parameterType="com.ksb.ksb_with_mybatis.model.Article">
     update article
     set author = #{author,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      title = #{title,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR}
+      title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

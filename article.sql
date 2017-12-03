@@ -8,6 +8,9 @@
 -- Table structure for table `article`
 --
 
+CREATE SCHEMA `ksb_with_mybatis`
+  DEFAULT CHARACTER SET utf8mb4;
+
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id`         BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -16,10 +19,45 @@ CREATE TABLE `article` (
   `gmt_create` DATETIME            DEFAULT NULL,
   `gmt_modify` DATETIME            DEFAULT NULL,
   `title`      VARCHAR(255)        DEFAULT NULL,
-  `url`        VARCHAR(250)        DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_la4e9l2g2otn85r9ih4btnmi` (`url`)
+  PRIMARY KEY (`id`)
 )
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8mb4;
+
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id`         BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `author`     VARCHAR(50)         DEFAULT NULL,
+  `content`    VARCHAR(200),
+  `gmt_create` DATETIME            DEFAULT NULL,
+  `gmt_modify` DATETIME            DEFAULT NULL,
+  `article_id` BIGINT(20),
+  PRIMARY KEY (`id`)
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8mb4;
+
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag` (
+  `id`         BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name`       VARCHAR(20)         DEFAULT NULL,
+  `gmt_create` DATETIME            DEFAULT NULL,
+  `gmt_modify` DATETIME            DEFAULT NULL,
+  `article_id` BIGINT(20),
+  PRIMARY KEY (`id`)
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8mb4;
+
+
+SHOW TABLES;
+
+DESC article;
+DESC comment;
+DESC tag;
+
+SELECT * FROM article;
+SELECT * FROM comment;
+SELECT * FROM tag;
 

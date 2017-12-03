@@ -3,17 +3,19 @@ package com.ksb.ksb_with_mybatis.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-import java.util.List;
 
-public class Article {
-    List<Comment> comments;
-    List<Tag> tags;
+public class Comment {
     private Long id;
+
     private String author;
-    private Date gmtCreate = new Date();
-    private Date gmtModify = new Date();
-    private String title;
+
     private String content;
+
+    private Date gmtCreate = new Date();
+
+    private Date gmtModify = new Date();
+
+    private Long articleId;
 
     public Long getId() {
         return id;
@@ -29,6 +31,14 @@ public class Article {
 
     public void setAuthor(String author) {
         this.author = author == null ? null : author.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -49,35 +59,11 @@ public class Article {
         this.gmtModify = gmtModify;
     }
 
-    public String getTitle() {
-        return title;
+    public Long getArticleId() {
+        return articleId;
     }
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
     }
 }

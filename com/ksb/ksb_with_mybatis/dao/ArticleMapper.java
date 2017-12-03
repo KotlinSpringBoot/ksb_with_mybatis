@@ -1,6 +1,6 @@
-package test.dao;
+package com.ksb.ksb_with_mybatis.dao;
 
-import test.model.Article;
+import com.ksb.ksb_with_mybatis.model.Article;
 
 public interface ArticleMapper {
     int deleteByPrimaryKey(Long id);

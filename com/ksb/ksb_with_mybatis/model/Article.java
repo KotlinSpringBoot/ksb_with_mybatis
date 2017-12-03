@@ -1,4 +1,4 @@
-package test.model;
+package com.ksb.ksb_with_mybatis.model;
 
 import java.util.Date;
 
@@ -12,8 +12,6 @@ public class Article {
     private Date gmtModify;
 
     private String title;
-
-    private String url;
 
     private String content;
 
@@ -55,14 +53,6 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
     }
 
     public String getContent() {
