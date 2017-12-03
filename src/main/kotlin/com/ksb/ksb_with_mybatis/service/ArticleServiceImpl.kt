@@ -21,7 +21,7 @@ class ArticleServiceImpl : ArticleService {
 
     override fun listPage(pageNo: Int, size: Int): PageInfo<Article> {
         PageHelper.startPage<Article>(pageNo, size)
-        // 其实一开始看到这段代码时候，我觉得应该是内存分页。
+        // 一开始看到这段代码时候，会觉得应该是内存分页。
         // 其实插件对 mybatis 执行流程进行了增强，添加了 limit 以及 count 查询，属于物理分页
         val list = articleMapper.findAll()
         //用PageInfo对结果进行包装
